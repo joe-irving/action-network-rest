@@ -46,6 +46,15 @@ module ActionNetworkRest
       object_from_response(response)
     end
 
+    def all_with_event_campaigns
+      events = all
+      event_campaigns = client.event_campaigns.all
+      event_campaigns.each do |event_campaign|
+        events.concat(client.event_campaigns(event_campaign.action_network_id).events.all)
+      end
+      events.uniq(&:action_network_id)
+    end
+
     private
 
     def osdi_key

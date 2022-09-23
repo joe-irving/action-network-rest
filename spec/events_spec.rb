@@ -181,4 +181,8 @@ describe ActionNetworkRest::Events do
                                                            'somesystem:123')
     end
   end
+
+  # describe "#all_with_event_campaign" do
+
+  # end
 end
